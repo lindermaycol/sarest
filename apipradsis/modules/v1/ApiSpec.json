@@ -1,0 +1,238 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Este es el servidor ApiRest para Pradsis.",
+    "version": "1.0.0",
+    "title": "Especificación Api Pradsis",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "proyectosidi@sencico.gob.pe"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost/sarest/apipradsis/web/",
+  "basePath": "v1",
+  "tags": [
+    {
+      "name": "Proyectos",
+      "description": "Web Services acerca de proyectos",
+      "externalDocs": {
+        "description": "Encuentra más",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+  	"/projects": {
+      "get": {
+        "tags": [
+          "projects"
+        ],
+        "summary": "Retorna todos los proyectos existentes en Pradsis",
+        "description": "Retorna todos los proyectos existentes en Pradsis mediante un token de autorización",
+        "operationId": "getProjects",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "YII_CSRF_TOKEN",
+            "in": "query",
+            "description": "Token de seguridad CSRF",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "NPRO_ID",
+            "in": "query",
+            "description": "ID del proyecto",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "NUSU_ID",
+            "in": "query",
+            "description": "ID del usuario de Pradsis",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operación exitosa",
+            "schema": {
+              "$ref": "#/definitions/proyectos"
+            }
+          },
+          "400": {
+            "description": "No se ingresó token de usuario autenticado",
+            "schema": {
+              "$ref": "#/definitions/400"
+            }
+          },
+          "404": {
+            "description": "No existe datos al respecto",
+            "schema": {
+              "$ref": "#/definitions/404"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "proyectos": {
+      "type": "object",
+      "required": [
+        "NPRO_ID",
+        "NEST_ID"
+      ],
+      "properties": {
+        "NPRO_ID": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "SPRO_PROYECTO": {
+          "type": "string",
+          "example": "RENOVACIÓN TECNOLÓGICA"
+        },
+        "SPRO_DEP_ID": {
+          "type": "char"
+        },
+		"NPRO_ANIO": {
+          "type": "integer",
+          "format": "int64"
+        },
+		"NPRO_SECUENCIA": {
+          "type": "integer",
+          "format": "int64"
+        },
+		"DPRO_INICIO": {
+          "type": "string",
+          "format": "date"
+        },
+		"NEST_ID": {
+          "type": "integer",
+          "format": "int64"
+        },
+		"NUSU_ID": {
+          "type": "integer",
+          "format": "int64"
+        },
+		"NCOM_ID": {
+          "type": "integer",
+          "format": "int64"
+        },
+		"NTIP_ID": {
+          "type": "integer",
+          "format": "int64"
+        },
+		"NPRO_VALOR_REF": {
+          "type": "integer",
+          "format": "int64"
+        },
+		"NARE_ID": {
+          "type": "integer",
+          "format": "int64"
+        },
+		"NPRO_VALOR_REAL": {
+          "type": "integer",
+          "format": "int64"
+        },
+		"SPRO_INSERT": {
+          "type": "string"
+        },
+		"DPRO_INSERT": {
+          "type": "string",
+          "format": "date"
+        },
+		"SPRO_UPDATE": {
+          "type": "string"
+        },
+		"DPRO_UPDATE": {
+          "type": "string",
+          "format": "date"
+        },
+		"SPRO_TERMINO": {
+          "type": "string"
+        },
+		"SPRO_TERMINADO": {
+          "type": "string"
+        },
+		"SPRO_OBSERVACION": {
+          "type": "string"
+        }
+      }
+    },
+    "400":{
+      "type": "object",
+      "required": [
+        "RESPONSE",
+        "MESSAGE"
+      ],
+      "properties": {
+      	"RESPONSE": {
+          "type": "integer",
+          "format": "int64",
+          "example":"400"
+        },
+		"MESSAGE": {
+          "type": "string",
+          "example": "Por favor ingrese un token de usuario autenticado"
+        }
+      }
+    },
+    "404":{
+      "type": "object",
+      "required": [
+        "RESPONSE",
+        "MESSAGE"
+      ],
+      "properties": {
+      	"RESPONSE": {
+          "type": "integer",
+          "format": "int64",
+          "example":"404"
+        },
+		"MESSAGE": {
+          "type": "string",
+          "example": "No existe datos al respecto"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Más información en",
+    "url": "http://swagger.io"
+  }
+    
+}
