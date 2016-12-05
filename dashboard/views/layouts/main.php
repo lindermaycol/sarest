@@ -4,7 +4,8 @@
  * @var string $content
  * @var \yii\web\View $this
  */
-
+use yii\widgets\Breadcrumbs;
+use common\widgets\Alert;
 use yii\helpers\Html;
 
 $bundle = yiister\gentelella\assets\Asset::register($this);
@@ -69,6 +70,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                         "url" => "#", 
                                         "icon" => "home",
                                         "items" => [
+                                            ["label" => "Indicadores", "url" => ["site/indicadores"]],
                                             ["label" => "Panel1", "url" => ["site/panel1"]],
                                             ["label" => "Panel2", "url" => ["site/panel2"]]
                                         ],
@@ -379,7 +381,10 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                 </div>
             <?php endif; ?>
             <div class="clearfix"></div>
-
+            <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <?= Alert::widget() ?>
             <?= $content ?>
         </div>
         <!-- /page content -->

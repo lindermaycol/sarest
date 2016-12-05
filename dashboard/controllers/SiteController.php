@@ -487,6 +487,25 @@ class SiteController extends Controller
     {
         return $this->render('tablaprecios');
     }
+
+    /**
+     * Displays indicadores page.
+     *
+     * @return mixed
+     */
+    public function actionIndicadores()
+    {
+        return $this->render('indicadores');
+    }
+    /**
+     * Displays altagerencia page.
+     *
+     * @return mixed
+     */
+    public function actionAltagerencia()
+    {
+        return $this->render('altagerencia');
+    }
     
     /**
      * Signs user up.
