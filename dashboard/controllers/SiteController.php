@@ -506,6 +506,15 @@ class SiteController extends Controller
     {
         return $this->render('altagerencia');
     }
+    /**
+     * Displays encuestas page.
+     *
+     * @return mixed
+     */
+    public function actionEncuestas()
+    {
+        return $this->render('encuestas');
+    }
     
     /**
      * Signs user up.

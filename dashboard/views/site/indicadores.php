@@ -330,7 +330,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </p>
                   </li>
                 </ul>
-                <a href="../../../seidi/index.php/admin/authentication/sa/login" target="_blank" class="btn btn-primary">Acceder</a>
+                <a href="index.php?r=site/encuestas" target="_blank" class="btn btn-primary">Acceder</a>
             </div>
         </div>
     </div>

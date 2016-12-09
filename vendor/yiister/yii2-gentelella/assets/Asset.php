@@ -15,5 +15,6 @@ class Asset extends \yii\web\AssetBundle
         'yiister\gentelella\assets\ExtensionAsset',
         'yiister\gentelella\assets\VendorAsset',
         'yiister\gentelella\assets\ThemeAsset',
+        'yiister\gentelella\assets\CustomAsset',
     ];
 }

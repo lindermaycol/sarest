@@ -13,9 +13,15 @@ class ExtensionAsset extends AssetBundle
 {
     public $sourcePath = '@yiister/gentelella/assets/src';
     public $js = [
-        'js/extension.js',
+        'js/extension.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset',
     ];
+    /*
+    $this->registerJsFile(Yii::$app->request->baseUrl.'/js/tablasdinamicas.js',
+ [  'depends' => [yii\web\JqueryAsset::className()],
+  'position' => \yii\web\View::POS_END
+  ]);
+    */
 }

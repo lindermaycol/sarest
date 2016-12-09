@@ -105,7 +105,8 @@ class VendorAsset extends AssetBundle
     	'pdfmake/build/pdfmake.min.js',
     	'pdfmake/build/vfs_fonts.js',
     	'echarts/dist/echarts.min.js',
-    	'echarts/map/js/world.js'
+    	'echarts/map/js/world.js',
+    	'datetime-moment/datetime-moment.js'
     ];
 
 }

@@ -106,6 +106,13 @@ class ComposerStaticInit627965bc67033dac1f1679f4e000bfb8
     );
 
     public static $prefixesPsr0 = array (
+        'o' => 
+        array (
+            'org\\jsonrpcphp\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/weberhofer/jsonrpcphp/src',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 
