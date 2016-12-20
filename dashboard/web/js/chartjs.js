@@ -218,36 +218,59 @@ var theme = {
   }
 };
 
-function loadcharts() {
+function loadcharts(urlajax,typeResponse,selector,typecall) {
+  console.log(typecall);
   $.ajax({
-    url: 'ajax/encuestas.php?type=chart',
-    dataType: 'json',
+    url: urlajax,
+    dataType: typeResponse,
     success: function(res) {
       if (res) {
-        var echartBar = echarts.init(document.getElementById('mainb'), theme);
-        var optionbarchart = res;
-        optionbarchart.dataZoom= [
-            {
-                show: true,
-                start: 1,
-                end: 6
-            },
-            {
-                type: 'inside',
-                start: 1,
-                end: 6
-            },
-            {
-                show: true,
-                yAxisIndex: 0,
-                filterMode: 'empty',
-                width: 30,
-                height: '80%',
-                showDataShadow: false,
-                left: '93%'
-            }
-        ];
-        echartBar.setOption(optionbarchart);
+
+        switch (typecall)
+        {
+          case 'chart':
+                $('#chartsblock').css('display','block');
+                var echartBar = echarts.init(document.getElementById(selector), theme);
+                var optionbarchart = res;
+                optionbarchart.dataZoom= [
+                    {
+                        show: true,
+                        start: 1,
+                        end: 6
+                    },
+                    {
+                        type: 'inside',
+                        start: 1,
+                        end: 6
+                    },
+                    {
+                        show: true,
+                        yAxisIndex: 0,
+                        filterMode: 'empty',
+                        width: 30,
+                        height: '80%',
+                        showDataShadow: false,
+                        left: '93%'
+                    }
+                ];
+                echartBar.setOption(optionbarchart);
+                break;
+          case 'normal':
+          //console.log(res);
+                if ($('.blockgroup' ).length)
+                {
+                    $('.blockgroup').remove();
+                }
+                if ($('#chartsblock' ).length)
+                {
+                    $('#chartsblock').remove();
+                }
+                $('#'+selector).append(res);
+                break;
+          default:
+                break;
+        } 
+        
       }
     }
   });

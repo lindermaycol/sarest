@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   function generateTable(selector) {
     var table = $(selector).on('xhr.dt', function(e, settings, json, xhr) {
-      loadcharts();
+      loadcharts('ajax/encuestas.php?type=chart','json','mainb','chart');
     }).DataTable({
       dom: "Blfrtip",
       "lengthMenu": [
@@ -37,7 +37,7 @@ $(document).ready(function() {
       "columnDefs": [{
         "targets": -1,
         "data": null,
-        "defaultContent": '<button type="button" class="btn btn-default btn-sm fa fa-tachometer"></button>'
+        "defaultContent": '<button type="button" class="btn btn-default btn-sm fa fa-tachometer" surveyid=""></button>'
       }]
 
     });
@@ -45,6 +45,10 @@ $(document).ready(function() {
     $(selector+' tbody').on('click', 'button', function() {
       var data = table.row($(this).parents('tr')).data();
       //console.log(data[0]);
+      //var surveystatistics='http://app.sencico.gob.pe/prd2/seidi/index.php/admin/statistics/sa/simpleStatistics/surveyid/'+data[0];
+      //window.open(surveystatistics, '_blank');
+      loadcharts('ajax/encuestas.php?type=chart&surveyid='+data[0],'html','containerchart','normal');
+      return false;
     });
   }
 
